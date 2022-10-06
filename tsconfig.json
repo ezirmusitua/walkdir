@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "composite": true, /* Enable constraints that allow a TypeScript project to be used with project references. */
+    "declaration": true,
+    "declarationMap": true, /* Create sourcemaps for d.ts files. */
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true, /* Ensure that casing is correct in imports. */
+    "incremental": true,
+    "isolatedModules": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "outDir": "./dist",
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": false,
+    "strictNullChecks": true,
+    "target": "es6",
+    "paths": {}
+  },
+  "exclude": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/out/**",
+    "**/*.js",
+    "**/*.test.ts"
+  ],
+  "references": [],
+  "watchOptions": {
+    "watchFile": "useFsEvents",
+    "watchDirectory": "useFsEvents",
+    "fallbackPolling": "dynamicPriority",
+    "synchronousWatchDirectory": true,
+    "excludeDirectories": [],
+    "excludeFiles": []
+  }
+}
