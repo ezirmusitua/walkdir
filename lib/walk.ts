@@ -29,15 +29,18 @@ export class FileEntry {
   }
 
   async read() {
+    if (this.children.length) return Buffer.from([]);
     return promises.readFile(this.fullpath);
   }
 
   async read_string(encoding: BufferEncoding = "utf8") {
+    if (this.children.length) return "";
     const buffer = await promises.readFile(this.fullpath);
     return buffer.toString(encoding);
   }
 
   async read_json() {
+    if (this.children.length) return null;
     const str = await this.read_string();
     return JSON.parse(str);
   }
