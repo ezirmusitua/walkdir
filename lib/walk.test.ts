@@ -65,3 +65,24 @@ test("walk should work", async () => {
   expect(convert_result1(list)).toBe(result1);
   expect(convert_result2(list)).toBe(result2);
 });
+
+test("should read correctly", async () => {
+  const _mock_content = () => {
+    fs.mkdirSync("__mock");
+    const fp = path.join("__mock", "file.json");
+    fs.writeFileSync(fp, JSON.stringify({ mock: true }));
+    return () => {
+      fs.rmSync(fp);
+      fs.rmdirSync("__mock");
+    };
+  };
+  const _clean = _mock_content();
+  const [target] = await walk("__mock");
+  const buf = await target.read();
+  const str = await target.read_string();
+  const json = await target.read_json();
+  expect(JSON.parse(buf.toString())).toStrictEqual({ mock: true });
+  expect(JSON.parse(str)).toStrictEqual({ mock: true });
+  expect(json).toStrictEqual({ mock: true });
+  _clean();
+});
